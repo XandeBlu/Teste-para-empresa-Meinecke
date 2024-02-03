@@ -60,33 +60,61 @@ class Estoque:
             print(f"{item_remover} não encontrado no estoque. ")
             print('Certifique-se de ter escrito corretamente o nome do item')
 
+    def ver_estoque(self):
+        print(self.itens)
+
 #--------------------------------------------------------------------
-print('Bem-Vindo ao Sistema!')
-print('')
-print('Digite 1 para cadastrar loja')
-print('Digite 2 para cadastrar clientes')
-print('Digite 3 para cadastrar fornecedores')
-print('Digite 4 para acessar o estoque')
-resposta = int(input())
+while True:
 
-if resposta == 1:
-    nova_loja = Loja(nomeloja="", cnpjloja="")
-    nova_loja.cadastrar_loja()
-    print('Loja cadastrada com sucesso!')
+    print('Bem-Vindo ao Sistema!')
+    print('')
+    print('Digite 1 para cadastrar loja')
+    print('Digite 2 para cadastrar clientes')
+    print('Digite 3 para cadastrar fornecedores')
+    print('Digite 4 para acessar o estoque')
+    print('Digite 0 para encerrar o programa')
+    resposta = int(input())
 
-elif resposta == 2 :
+    if resposta == 0:
+        print('Encerrando o programa!')
+        break
+
+    elif resposta == 1:
+        nova_loja = Loja(nomeloja="", cnpjloja="")
+        nova_loja.cadastrar_loja()
+        print('Loja cadastrada com sucesso!')
+
+    elif resposta == 2 :
         novo_cliente = Cliente(nomecliente="", cnpjcliente="")
         novo_cliente.cadastrarcliente()
         print('Cliente cadastrado com sucesso!')
 
-elif resposta == 3:
+    elif resposta == 3:
         novo_fornecedor = Fornecedor(nomefornecedor="", cnpjfornecedor="")
         novo_fornecedor.cadastrarfornecedor()
         print('Fornedor cadastrado com sucesso!')
 
-elif resposta == 4:
-    print('Bem vindo ao estoque!')
-    print('1-Adicionar itens ao estoque')
-    print('2-Remover itens do estoque')
-    print('3-Ver estoque ')
-    respostaestoque = int(input())
+    elif resposta == 4:
+        print('Bem vindo ao estoque!')
+        print('1-Adicionar itens ao estoque')
+        print('2-Remover itens do estoque')
+        print('3-Ver estoque ')
+        print('0 - Voltar ao menu')
+        respostaestoque = int(input())
+
+    estoque = Estoque()
+
+    if respostaestoque == 1:
+        estoque.adicionar_ao_estoque()
+
+    elif respostaestoque == 2:
+        estoque.remover_do_estoque()
+
+    elif  respostaestoque == 3:
+        estoque.ver_estoque()
+
+    elif respostaestoque == 0:
+        print('De volta ao menu!')
+        break
+    else:
+        print('Resposta inválida!')
