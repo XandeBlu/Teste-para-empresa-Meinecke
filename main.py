@@ -9,7 +9,6 @@ Regras:
 •	Criar classes com setters e getters
 '''
 #----------------------------------------------------------------
-i = 0
 class Loja:
     def __init__(self, nomeloja,cnpjloja):
         self.nomeloja = nomeloja
@@ -62,8 +61,10 @@ class Estoque:
 
     def ver_estoque(self):
         print(self.itens)
+        print(self.precos)
 
 #--------------------------------------------------------------------
+estoque = Estoque()
 while True:
 
     print('Bem-Vindo ao Sistema!')
@@ -102,19 +103,18 @@ while True:
         print('0 - Voltar ao menu')
         respostaestoque = int(input())
 
-    estoque = Estoque()
 
-    if respostaestoque == 1:
-        estoque.adicionar_ao_estoque()
+        if respostaestoque == 1:
+            estoque.adicionar_ao_estoque()
 
-    elif respostaestoque == 2:
-        estoque.remover_do_estoque()
+        elif respostaestoque == 2:
+            estoque.remover_do_estoque()
 
-    elif  respostaestoque == 3:
-        estoque.ver_estoque()
+        elif  respostaestoque == 3:
+            estoque.ver_estoque()
 
-    elif respostaestoque == 0:
-        print('De volta ao menu!')
-        break
-    else:
-        print('Resposta inválida!')
+        elif respostaestoque == 0:
+            print('De volta ao menu!')
+            break
+        else:
+            print('Resposta inválida!')
