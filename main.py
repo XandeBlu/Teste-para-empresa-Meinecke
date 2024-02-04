@@ -41,12 +41,15 @@ class Estoque:
     def __init__(self):
         self.itens = []
         self.precos = []
+        self.quantidade = []
 
     def adicionar_ao_estoque(self):
         item = input('Digite qual produto deseja adicionar: ')
         preco = float(input('Digite o preço do produto: '))
+        quantidade = int(input('Quantidade do produto: '))
         self.itens.append(item)
         self.precos.append(preco)
+        self.quantidade.append(quantidade)
 
     def remover_do_estoque(self):
         item_remover = input('Digite o nome do item que deseja remover: ')
@@ -60,8 +63,12 @@ class Estoque:
             print('Certifique-se de ter escrito corretamente o nome do item')
 
     def ver_estoque(self):
+        print('Item')
         print(self.itens)
+        print('Preço')
         print(self.precos)
+        print('Quantidade')
+        print(self.quantidade)
 
 #--------------------------------------------------------------------
 estoque = Estoque()
