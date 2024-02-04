@@ -1,97 +1,141 @@
-'''''
-#“Criar um projeto de movimentação de estoque de produtos de limpeza de uma loja, para isso,
-# será necessário cadastrar a loja, os clientes, os fornecedores e o controle de estoque
-# (entrada e saída de produtos)”
-
-Regras:
-•	Linguagem de programação: A que tiver mais afinidade, desde que seja Orientada a objeto (POO)
-•	Não é necessário utilizar banco de dados
-•	Criar classes com setters e getters
-'''
-#----------------------------------------------------------------
 class Loja:
     def __init__(self):
-        self.nomelojas = []
-        self.cnpjlojas = []
+        self._nomelojas = []
+        self._cnpjlojas = []
+
+    def get_nomelojas(self):
+        return self._nomelojas
+
+    def set_nomelojas(self, nomelojas):
+        self._nomelojas = nomelojas
+
+    def get_cnpjlojas(self):
+        return self._cnpjlojas
+
+    def set_cnpjlojas(self, cnpjlojas):
+        self._cnpjlojas = cnpjlojas
 
     def cadastrar_loja(self):
-        self.nomeloja = input('Digite o nome da loja: ')
-        self.cnpjloja = input('Digite o cnpj da loja: ')
-        self.nomelojas.append(self.nomeloja)
-        self.cnpjlojas.append(self.cnpjloja)
+        nova_loja = Loja()
+        nova_loja.set_nomelojas(self.get_nomelojas() + [input('Digite o nome da loja: ')])
+        nova_loja.set_cnpjlojas(self.get_cnpjlojas() + [input('Digite o cnpj da loja: ')])
+        return nova_loja
 
     def ver_lojas(self):
         print('-----------------------------------------')
         print('Lojas')
-        print(self.nomelojas)
+        print(self._nomelojas)
         print('-----------------------------------------')
         print('Respectivos cnpjs')
-        print(self.cnpjlojas)
+        print(self._cnpjlojas)
         print('-----------------------------------------')
 
 
-#------------------------------------------------------------------
 class Cliente:
     def __init__(self):
-        self.nomeclientes = []
-        self.cnpjclientes = []
+        self._nomeclientes = []
+        self._cnpjclientes = []
+
+    def get_nomeclientes(self):
+        return self._nomeclientes
+
+    def set_nomeclientes(self, nomeclientes):
+        self._nomeclientes = nomeclientes
+
+    def get_cnpjclientes(self):
+        return self._cnpjclientes
+
+    def set_cnpjclientes(self, cnpjclientes):
+        self._cnpjclientes = cnpjclientes
 
     def cadastrar_cliente(self):
-        self.nomecliente = input('Digite o nome do cliente: ')
-        self.cnpjcliente = input('Digite qual o cnpj do cliente: ')
-        self.nomeclientes.append(self.nomecliente)
-        self.cnpjclientes.append(self.cnpjcliente)
+        novo_cliente = Cliente()
+        novo_cliente.set_nomeclientes(self.get_nomeclientes() + [input('Digite o nome do cliente: ')])
+        novo_cliente.set_cnpjclientes(self.get_cnpjclientes() + [input('Digite qual o cnpj do cliente: ')])
+        return novo_cliente
 
     def ver_clientes(self):
         print('-----------------------------------------')
         print('Nome dos Clientes')
-        print(self.nomeclientes)
+        print(self._nomeclientes)
         print('-----------------------------------------')
         print('Respectivos Cnpjs')
-        print(self.cnpjclientes)
+        print(self._cnpjclientes)
         print('-----------------------------------------')
-#-------------------------------------------------------------------
+
+
 class Fornecedor:
     def __init__(self):
-        self.nomefornecedores = []
-        self.cnpjfornecedores = []
+        self._nomefornecedores = []
+        self._cnpjfornecedores = []
+
+    def get_nomefornecedores(self):
+        return self._nomefornecedores
+
+    def set_nomefornecedores(self, nomefornecedores):
+        self._nomefornecedores = nomefornecedores
+
+    def get_cnpjfornecedores(self):
+        return self._cnpjfornecedores
+
+    def set_cnpjfornecedores(self, cnpjfornecedores):
+        self._cnpjfornecedores = cnpjfornecedores
 
     def cadastrar_fornecedor(self):
-        self.nomefornecedor = input('Digite o nome do fornecedor: ')
-        self.cnpjfornecedor = input('Digite o cnpj do fornecedor: ')
-        self.nomefornecedores.append(self.nomefornecedor)
-        self.cnpjfornecedores.append(self.cnpjfornecedor)
+        novo_fornecedor = Fornecedor()
+        novo_fornecedor.set_nomefornecedores(self.get_nomefornecedores() + [input('Digite o nome do fornecedor: ')])
+        novo_fornecedor.set_cnpjfornecedores(self.get_cnpjfornecedores() + [input('Digite o cnpj do fornecedor: ')])
+        return novo_fornecedor
 
     def ver_fornecedores(self):
         print('-----------------------------------------')
         print('Nome')
-        print(self.nomefornecedores)
+        print(self._nomefornecedores)
         print('-----------------------------------------')
         print('Respectivos Cnpj')
-        print(self.cnpjfornecedores)
+        print(self._cnpjfornecedores)
         print('-----------------------------------------')
-#--------------------------------------------------------------------
+
+
 class Estoque:
     def __init__(self):
-        self.itens = []
-        self.precos = []
-        self.quantidade = []
+        self._itens = []
+        self._precos = []
+        self._quantidade = []
+
+    def get_itens(self):
+        return self._itens
+
+    def set_itens(self, itens):
+        self._itens = itens
+
+    def get_precos(self):
+        return self._precos
+
+    def set_precos(self, precos):
+        self._precos = precos
+
+    def get_quantidade(self):
+        return self._quantidade
+
+    def set_quantidade(self, quantidade):
+        self._quantidade = quantidade
 
     def adicionar_ao_estoque(self):
-        item = input('Digite qual produto deseja adicionar: ')
-        preco = float(input('Digite o preço do produto: '))
-        quantidade = int(input('Quantidade do produto: '))
-        self.itens.append(item)
-        self.precos.append(preco)
-        self.quantidade.append(quantidade)
+        novo_item = input('Digite qual produto deseja adicionar: ')
+        novo_preco = float(input('Digite o preço do produto: '))
+        nova_quantidade = int(input('Quantidade do produto: '))
+        self.set_itens(self.get_itens() + [novo_item])
+        self.set_precos(self.get_precos() + [novo_preco])
+        self.set_quantidade(self.get_quantidade() + [nova_quantidade])
 
     def remover_do_estoque(self):
         item_remover = input('Digite o nome do item que deseja remover: ')
-        if item_remover in self.itens:
-            indice_item = self.itens.index(item_remover)
-            del self.itens[indice_item]
-            del self.precos[indice_item]
-            del self.quantidade[indice_item]
+        if item_remover in self.get_itens():
+            indice_item = self.get_itens().index(item_remover)
+            self.set_itens(self.get_itens()[:indice_item] + self.get_itens()[indice_item + 1:])
+            self.set_precos(self.get_precos()[:indice_item] + self.get_precos()[indice_item + 1:])
+            self.set_quantidade(self.get_quantidade()[:indice_item] + self.get_quantidade()[indice_item + 1:])
             print(item_remover, ' removido do estoque')
         else:
             print(item_remover, 'não encontrado no estoque')
@@ -100,25 +144,25 @@ class Estoque:
     def ver_estoque(self):
         print('-----------------------------------------')
         print('Item')
-        print(self.itens)
+        print(self.get_itens())
         print('-----------------------------------------')
         print('Preço')
-        print(self.precos)
+        print(self.get_precos())
         print('-----------------------------------------')
         print('Quantidade')
-        print(self.quantidade)
+        print(self.get_quantidade())
         print('-----------------------------------------')
 
     def alterar_quantidade(self):
         item_alterar = input('Digite o nome do item que você deseja alterar a quantidade')
-        if item_alterar in self.itens:
-            indice_item = self.itens.index(item_alterar)
+        if item_alterar in self.get_itens():
+            indice_item = self.get_itens().index(item_alterar)
             nova_quantidade = int(input('Digite a nova quantidade do produto'))
-            self.quantidade[indice_item] = nova_quantidade
+            self.set_quantidade(self.get_quantidade()[:indice_item] + [nova_quantidade] + self.get_quantidade()[indice_item + 1:])
+            print('Produto alterado com sucesso!')
 
 
-#--------------------------------------------------------------------
-#Menu Principal
+# Menu Principal
 estoque = Estoque()
 loja = Loja()
 cliente = Cliente()
@@ -138,8 +182,6 @@ while True:
     if resposta == 0:
         print('Encerrando o programa!')
         break
-#--------------------------------------------------------
-# Área da loja
 
     elif resposta == 1:
         while True:
@@ -151,7 +193,7 @@ while True:
             respostaloja = int(input())
 
             if respostaloja == 1:
-                loja.cadastrar_loja()
+                loja = loja.cadastrar_loja()
                 print('-----------------------------------------')
                 print('Loja cadastrada com sucesso!')
                 print('-----------------------------------------')
@@ -164,10 +206,8 @@ while True:
 
             else:
                 print('Resposta inválida')
-#------------------------------------------------------------
-#Área do Cliente
-    elif resposta == 2 :
 
+    elif resposta == 2:
         while True:
             print('-----------------------------------------')
             print('1 - Para cadastrar novo Cliente')
@@ -176,8 +216,8 @@ while True:
             print('-----------------------------------------')
             respostacliente = int(input())
 
-            if respostacliente == 1 :
-                cliente.cadastrar_cliente()
+            if respostacliente == 1:
+                cliente = cliente.cadastrar_cliente()
                 print('Cliente cadastrado com sucesso!')
 
             elif respostacliente == 2:
@@ -189,10 +229,6 @@ while True:
             else:
                 print('Resposta Inválida')
 
-
-#--------------------------------------------------------------
-#Área dos Fornecedores
-
     elif resposta == 3:
         while True:
             print('-----------------------------------------')
@@ -203,7 +239,7 @@ while True:
             respostafornecedor = int(input())
 
             if respostafornecedor == 1:
-                fornecedor.cadastrar_fornecedor()
+                fornecedor = fornecedor.cadastrar_fornecedor()
                 print('Fornecedor cadastrado com sucesso!')
 
             elif respostafornecedor == 2:
@@ -215,42 +251,42 @@ while True:
             else:
                 print('Resposta Inválida')
 
-#------------------------------------------------------------------------
-#Área do Estoque
     elif resposta == 4:
         while True:
-        print('Bem vindo ao estoque!')
-        print('-----------------------------------------')
-        print('1-Adicionar itens ao estoque')
-        print('2-Remover itens do estoque')
-        print('3-Alterar quantidade de itens no estoque ')
-        print('4 - ver estoque')
-        print('0 - Voltar ao menu')
-        print('-----------------------------------------')
-        respostaestoque = int(input())
-
-        if respostaestoque == 1:
-            estoque.adicionar_ao_estoque()
-            print('Produto adicionado com sucesso!')
+            print('Bem vindo ao estoque!')
             print('-----------------------------------------')
-
-        elif respostaestoque == 2:
-            estoque.remover_do_estoque()
-            print('Produto removido com sucesso!')
+            print('1 - Adicionar itens ao estoque')
+            print('2 - Remover itens do estoque')
+            print('3 - Alterar quantidade de itens no estoque ')
+            print('4 - Ver estoque')
+            print('0 - Voltar ao menu')
             print('-----------------------------------------')
+            respostaestoque = int(input())
 
-        elif respostaestoque==3:
-            estoque.alterar_quantidade()
-            print('Produto alterado com sucesso!')
-            print('-----------------------------------------')
+            if respostaestoque == 1:
+                estoque.adicionar_ao_estoque()
+                print('Produto adicionado com sucesso!')
+                print('-----------------------------------------')
 
-        elif respostaestoque == 4:
-            estoque.ver_estoque()
+            elif respostaestoque == 2:
+                estoque.remover_do_estoque()
+                print('Produto removido com sucesso!')
+                print('-----------------------------------------')
 
-        elif respostaestoque == 0:
-            print('De volta ao menu!')
-            break
-        else:
-            print('Resposta inválida!')
+            elif respostaestoque == 3:
+                estoque.alterar_quantidade()
+                print('Produto alterado com sucesso!')
+                print('-----------------------------------------')
+
+            elif respostaestoque == 4:
+                estoque.ver_estoque()
+
+            elif respostaestoque == 0:
+                print('De volta ao menu!')
+                break
+
+            else:
+                print('Resposta inválida!')
+
     else:
         print('Resposta inválida')
