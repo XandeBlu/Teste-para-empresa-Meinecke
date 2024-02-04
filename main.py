@@ -10,32 +10,66 @@ Regras:
 '''
 #----------------------------------------------------------------
 class Loja:
-    def __init__(self, nomeloja,cnpjloja):
-        self.nomeloja = nomeloja
-        self.cnpj = cnpjloja
+    def __init__(self):
+        self.nomelojas = []
+        self.cnpjlojas = []
 
     def cadastrar_loja(self):
         self.nomeloja = input('Digite o nome da loja: ')
         self.cnpjloja = input('Digite o cnpj da loja: ')
+        self.nomelojas.append(self.nomeloja)
+        self.cnpjlojas.append(self.cnpjloja)
+
+    def ver_lojas(self):
+        print('-----------------------------------------')
+        print('Lojas')
+        print(self.nomelojas)
+        print('-----------------------------------------')
+        print('Respectivos cnpjs')
+        print(self.cnpjlojas)
+        print('-----------------------------------------')
+
 
 #------------------------------------------------------------------
 class Cliente:
-    def __init__(self, nomecliente,cnpjcliente):
-        self.nomecliente = nomecliente
-        self.cnpjcliente = cnpjcliente
+    def __init__(self):
+        self.nomeclientes = []
+        self.cnpjclientes = []
 
-    def cadastrarcliente(self):
+    def cadastrar_cliente(self):
         self.nomecliente = input('Digite o nome do cliente: ')
         self.cnpjcliente = input('Digite qual o cnpj do cliente: ')
+        self.nomeclientes.append(self.nomecliente)
+        self.cnpjclientes.append(self.cnpjcliente)
+
+    def ver_clientes(self):
+        print('-----------------------------------------')
+        print('Nome dos Clientes')
+        print(self.nomeclientes)
+        print('-----------------------------------------')
+        print('Respectivos Cnpjs')
+        print(self.cnpjclientes)
+        print('-----------------------------------------')
 #-------------------------------------------------------------------
 class Fornecedor:
-    def __init__(self, nomefornecedor, cnpjfornecedor):
-        self.nomefornecedor = nomefornecedor
-        self.cnpjfornecedor = cnpjfornecedor
+    def __init__(self):
+        self.nomefornecedores = []
+        self.cnpjfornecedores = []
 
-    def cadastrarfornecedor(self):
+    def cadastrar_fornecedor(self):
         self.nomefornecedor = input('Digite o nome do fornecedor: ')
         self.cnpjfornecedor = input('Digite o cnpj do fornecedor: ')
+        self.nomefornecedores.append(self.nomefornecedor)
+        self.cnpjfornecedores.append(self.cnpjfornecedor)
+
+    def ver_fornecedores(self):
+        print('-----------------------------------------')
+        print('Nome')
+        print(self.nomefornecedores)
+        print('-----------------------------------------')
+        print('Respectivos Cnpj')
+        print(self.cnpjfornecedores)
+        print('-----------------------------------------')
 #--------------------------------------------------------------------
 class Estoque:
     def __init__(self):
@@ -57,51 +91,110 @@ class Estoque:
             indice_item = self.itens.index(item_remover)
             del self.itens[indice_item]
             del self.precos[indice_item]
-            print(f"{item_remover} removido do estoque.")
+            del self.quantidade[indice_item]
+            print(item_remover, ' removido do estoque')
         else:
-            print(f"{item_remover} não encontrado no estoque. ")
+            print(item_remover, 'não encontrado no estoque')
             print('Certifique-se de ter escrito corretamente o nome do item')
 
     def ver_estoque(self):
+        print('-----------------------------------------')
         print('Item')
         print(self.itens)
+        print('-----------------------------------------')
         print('Preço')
         print(self.precos)
+        print('-----------------------------------------')
         print('Quantidade')
         print(self.quantidade)
+        print('-----------------------------------------')
 
 #--------------------------------------------------------------------
+#Menu Principal
 estoque = Estoque()
+loja = Loja()
+cliente = Cliente()
+fornecedor = Fornecedor()
 while True:
 
     print('Bem-Vindo ao Sistema!')
     print('')
-    print('Digite 1 para cadastrar loja')
-    print('Digite 2 para cadastrar clientes')
-    print('Digite 3 para cadastrar fornecedores')
-    print('Digite 4 para acessar o estoque')
-    print('Digite 0 para encerrar o programa')
+    print('1 - Acessar área das loja')
+    print('2 - Acessar área dos clientes')
+    print('3 - Acessar área dos fornecedores')
+    print('4 - Acessar o estoque')
+    print('0 - Encerrar o programa')
+    print('-----------------------------------------')
     resposta = int(input())
 
     if resposta == 0:
         print('Encerrando o programa!')
         break
+#--------------------------------------------------------
+# Área da loja
 
     elif resposta == 1:
-        nova_loja = Loja(nomeloja="", cnpjloja="")
-        nova_loja.cadastrar_loja()
-        print('Loja cadastrada com sucesso!')
+        while True:
+            print('1 - Para cadastrar nova loja')
+            print('2 - Para ver as lojas cadastradas')
+            print('3 - Para voltar ao menu')
+            respostaloja = int(input())
 
+            if respostaloja == 1:
+                loja.cadastrar_loja()
+                print('-----------------------------------------')
+                print('Loja cadastrada com sucesso!')
+                print('-----------------------------------------')
+            elif respostaloja == 2:
+                loja.ver_lojas()
+            elif respostaloja == 3:
+                break
+            else:
+                print('Resposta inválida')
+#------------------------------------------------------------
+#Área do Cliente
     elif resposta == 2 :
-        novo_cliente = Cliente(nomecliente="", cnpjcliente="")
-        novo_cliente.cadastrarcliente()
-        print('Cliente cadastrado com sucesso!')
+        while True:
+            print('-----------------------------------------')
+            print('1 - Para cadastrar novo Cliente')
+            print('2 - Para ver os clientes cadastrados')
+            print('3 - Para voltar ao menu')
+            print('-----------------------------------------')
+            respostacliente = int(input())
+            if respostacliente == 1 :
+                cliente.cadastrar_cliente()
+                print('Cliente cadastrado com sucesso!')
+            elif respostacliente == 2:
+                cliente.ver_clientes()
+            elif respostacliente == 3:
+                break
+            else:
+                print('Resposta Inválida')
+
+
+#--------------------------------------------------------------
+#Área dos Fornecedores
 
     elif resposta == 3:
-        novo_fornecedor = Fornecedor(nomefornecedor="", cnpjfornecedor="")
-        novo_fornecedor.cadastrarfornecedor()
-        print('Fornedor cadastrado com sucesso!')
+        while True:
+            print('-----------------------------------------')
+            print('1 - Para cadastrar novo fornecedor')
+            print('2 - Para ver os fornecedores cadastrados')
+            print('3 - Para voltar ao menu')
+            print('-----------------------------------------')
+            respostafornecedor = int(input())
+            if respostafornecedor == 1:
+                fornecedor.cadastrar_fornecedor()
+                print('Fornecedor cadastrado com sucesso!')
+            elif respostafornecedor == 2:
+                fornecedor.ver_fornecedores()
+            elif respostafornecedor == 3:
+                break
+            else:
+                print('Resposta Inválida')
 
+#------------------------------------------------------------------------
+#Área do Estoque
     elif resposta == 4:
         print('Bem vindo ao estoque!')
         print('1-Adicionar itens ao estoque')
@@ -125,3 +218,5 @@ while True:
             break
         else:
             print('Resposta inválida!')
+    else:
+        print('Resposta inválida')
