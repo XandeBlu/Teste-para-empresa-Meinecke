@@ -109,6 +109,14 @@ class Estoque:
         print(self.quantidade)
         print('-----------------------------------------')
 
+    def alterar_quantidade(self):
+        item_alterar = input('Digite o nome do item que você deseja alterar a quantidade')
+        if item_alterar in self.itens:
+            indice_item = self.itens.index(item_alterar)
+            nova_quantidade = int(input('Digite a nova quantidade do produto'))
+            self.quantidade[indice_item] = nova_quantidade
+
+
 #--------------------------------------------------------------------
 #Menu Principal
 estoque = Estoque()
@@ -135,9 +143,11 @@ while True:
 
     elif resposta == 1:
         while True:
+            print('-----------------------------------------')
             print('1 - Para cadastrar nova loja')
             print('2 - Para ver as lojas cadastradas')
             print('3 - Para voltar ao menu')
+            print('-----------------------------------------')
             respostaloja = int(input())
 
             if respostaloja == 1:
@@ -145,15 +155,19 @@ while True:
                 print('-----------------------------------------')
                 print('Loja cadastrada com sucesso!')
                 print('-----------------------------------------')
+
             elif respostaloja == 2:
                 loja.ver_lojas()
+
             elif respostaloja == 3:
                 break
+
             else:
                 print('Resposta inválida')
 #------------------------------------------------------------
 #Área do Cliente
     elif resposta == 2 :
+
         while True:
             print('-----------------------------------------')
             print('1 - Para cadastrar novo Cliente')
@@ -161,13 +175,17 @@ while True:
             print('3 - Para voltar ao menu')
             print('-----------------------------------------')
             respostacliente = int(input())
+
             if respostacliente == 1 :
                 cliente.cadastrar_cliente()
                 print('Cliente cadastrado com sucesso!')
+
             elif respostacliente == 2:
                 cliente.ver_clientes()
+
             elif respostacliente == 3:
                 break
+
             else:
                 print('Resposta Inválida')
 
@@ -183,34 +201,50 @@ while True:
             print('3 - Para voltar ao menu')
             print('-----------------------------------------')
             respostafornecedor = int(input())
+
             if respostafornecedor == 1:
                 fornecedor.cadastrar_fornecedor()
                 print('Fornecedor cadastrado com sucesso!')
+
             elif respostafornecedor == 2:
                 fornecedor.ver_fornecedores()
+
             elif respostafornecedor == 3:
                 break
+
             else:
                 print('Resposta Inválida')
 
 #------------------------------------------------------------------------
 #Área do Estoque
     elif resposta == 4:
+        while True:
         print('Bem vindo ao estoque!')
+        print('-----------------------------------------')
         print('1-Adicionar itens ao estoque')
         print('2-Remover itens do estoque')
-        print('3-Ver estoque ')
+        print('3-Alterar quantidade de itens no estoque ')
+        print('4 - ver estoque')
         print('0 - Voltar ao menu')
+        print('-----------------------------------------')
         respostaestoque = int(input())
-
 
         if respostaestoque == 1:
             estoque.adicionar_ao_estoque()
+            print('Produto adicionado com sucesso!')
+            print('-----------------------------------------')
 
         elif respostaestoque == 2:
             estoque.remover_do_estoque()
+            print('Produto removido com sucesso!')
+            print('-----------------------------------------')
 
-        elif  respostaestoque == 3:
+        elif respostaestoque==3:
+            estoque.alterar_quantidade()
+            print('Produto alterado com sucesso!')
+            print('-----------------------------------------')
+
+        elif respostaestoque == 4:
             estoque.ver_estoque()
 
         elif respostaestoque == 0:
